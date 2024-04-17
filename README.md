@@ -1,7 +1,5 @@
 # Decomposing and Editing Predictions <br> by Modeling Model Computation
 
-TODO: update links after arxiving + public repo-ing 
-
 This repository contains the code to estimate and analyze *component attributions*, as introduced in our paper:
 
 **Decomposing and Editing Predictions by Modeling Model Computation** <br>
@@ -10,7 +8,7 @@ Paper: [arxiv.org/abs/TODO](https://arxiv.org/abs/TODO) <br>
 Blog post: [gradientscience.org/modelcomponents](https://gradientscience.org/modelcomponents)
 
 <p align = 'center'>
-  <img alt="A summary of the *component modeling* framework" src='static/headline.jpg' width='70%'/>
+  <img alt="A summary of the *component modeling* framework" src='static/headline.jpg' width='90%'/>
 </p>
 
 <p align='center'>
@@ -27,7 +25,7 @@ Blog post: [gradientscience.org/modelcomponents](https://gradientscience.org/mod
 <i>How does the internal computation of deep neural networks transform examples into predictions?</i>
 </p>
 
-In our [paper](https://arxiv.org/abs/TODO), we attempt to better characterize this computation by decomposing predictions in terms of *model components*, i.e., architectural "building blocks" such as convolution filters or attention heads that carry out a model's computation.
+In our [](https://arxiv.org/abs/TODO), we attempt to better characterize this computation by decomposing predictions in terms of *model components*, i.e., architectural "building blocks" such as convolution filters or attention heads that carry out a model's computation.
 We formalize our high-level goal of understanding how model components shape a given prediction into a concrete task called *component modeling*, described below.
 
 **Component models.**
@@ -95,7 +93,7 @@ in a streamlined manner.
 
 ## Pre-computed component attributions
 
-We also open-source a set of Coar-estimated component attributions that we use in our [paper](link):
+We also open-source a set of Coar-estimated component attributions that we use in our [paper](https://arxiv.org/abs/TODO):
 
 | 💾  Dataset | 🔗 Model | 🧮 Component attributions using Coar |
 |---------------------|----------|----------------------|
@@ -116,7 +114,7 @@ rm -f "$REPO_DIR/data/data.zip"
 
 ## Editing models with *Coar-Edit*
 
-In our [paper](link), we show that Coar-estimated attributions directly enable model editing.
+In our [paper](https://arxiv.org/abs/TODO), we show that Coar-estimated attributions directly enable model editing.
 Specifically, we outline a simple three-step procedure for model editing called Coar-Edit and demonstrate its effectiveness on six editing tasks ranging from fixing model errors
 to mitigating backdoor attacks.
 
@@ -137,12 +135,7 @@ Specifically, we provide notebooks for the following experiments:
 ### Citation
 If you use this code in your work, please cite using the following BibTeX entry:
 ```bibtex
-@article{shah2024components,
-  title={Decomposing Predictions By Modeling Model Computation},
-  author={Harshay Shah and Andrew Ilyas and Aleksander Madry},
-  journal={arXiv preprint arXiv:24xx.xxxx},
-  year={2024}
-}
+TODO
 ```
 
 ## Maintainers
