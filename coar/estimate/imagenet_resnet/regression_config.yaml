@@ -1,0 +1,16 @@
+data:
+  data_path: ~
+  num_train: 45000
+  num_val: 5000
+cfg:
+  out_dir: ~
+  num_workers: 8
+  k: 1
+  batch_size: 2500
+  lr: 1e-3
+  eps: 1e-4
+  true_random: true
+  manual_max_lambda: 0
+early_stopping:
+  check_every: 3
+  eps: 1e-10
