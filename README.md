@@ -4,7 +4,7 @@ This repository contains the code to estimate and analyze *component attribution
 
 **Decomposing and Editing Predictions by Modeling Model Computation** <br>
 *Harshay Shah, Andrew Ilyas, Aleksander Madry* <br>
-Paper: [arxiv.org/abs/TODO](https://arxiv.org/abs/TODO) <br>
+Paper: [https://arxiv.org/abs/2404.11534](https://arxiv.org/abs/2404.11534) <br>
 Blog post: [gradientscience.org/modelcomponents](https://gradientscience.org/modelcomponents)
 
 <p align = 'center'>
@@ -25,7 +25,7 @@ Blog post: [gradientscience.org/modelcomponents](https://gradientscience.org/mod
 <i>How does the internal computation of deep neural networks transform examples into predictions?</i>
 </p>
 
-In our [](https://arxiv.org/abs/TODO), we attempt to better characterize this computation by decomposing predictions in terms of *model components*, i.e., architectural "building blocks" such as convolution filters or attention heads that carry out a model's computation.
+In our [paper](https://arxiv.org/abs/2404.11534), we attempt to better characterize this computation by decomposing predictions in terms of *model components*, i.e., architectural "building blocks" such as convolution filters or attention heads that carry out a model's computation.
 We formalize our high-level goal of understanding how model components shape a given prediction into a concrete task called *component modeling*, described below.
 
 **Component models.**
@@ -34,12 +34,12 @@ Given an example, a component attribution---a *linear* component model---is a li
 
 **Estimating component attributions with Coar**.
 We develop a scalable method for estimating component attributions called Coar.
-In [Section 4 of our paper](https://arxiv.org/abs/TODO), we show that Coar yields accurate component attributions on large-scale vision and language models such as ImageNet ViTs and Phi-2. 
+In [Section 4 of our paper](https://arxiv.org/abs/2404.11534), we show that Coar yields accurate component attributions on large-scale vision and language models such as ImageNet ViTs and Phi-2. 
 In this repository, we provide [pre-computed component attributions](#pre-computed-component-attributions) as well as [code for evaluating and applying Coar *from scratch*](#estimating-component-attributions-with-coar).
 
 **Editing models with component attributions.**
 We also develop Coar-Edit, a simple three-step procedure for model editing using Coar attributions.
-[Section 5 of our paper](https://arxiv.org/abs/TODO) applies Coar-Edit to editing tasks such as fixing model errors, improving subpopulation robustness, and improving robustness to backdoor attacks.
+[Section 5 of our paper](https://arxiv.org/abs/2404.11534) applies Coar-Edit to editing tasks such as fixing model errors, improving subpopulation robustness, and improving robustness to backdoor attacks.
 Here, we provide [notebooks](#editing-models-with-coar-edit) to reproduce (and extend) these experiments.
 
 ## Installation
@@ -58,7 +58,7 @@ pip install -r requirements.txt
 
 ## Estimating component attributions with *Coar*
 <p align = 'center'>
-  <img alt="Evaluating Coar-estimated component attributions (see https://arxiv.org/abs/TODO for details)" src='static/eval.jpg' width='70%'/>
+  <img alt="Evaluating Coar-estimated component attributions (see https://arxiv.org/abs/2404.11534 for details)" src='static/eval.jpg' width='70%'/>
 </p>
 
 **Estimating Coar attributions.**
@@ -93,7 +93,7 @@ in a streamlined manner.
 
 ## Pre-computed component attributions
 
-We also open-source a set of Coar-estimated component attributions that we use in our [paper](https://arxiv.org/abs/TODO):
+We also open-source a set of Coar-estimated component attributions that we use in our [paper](https://arxiv.org/abs/2404.11534):
 
 | 💾  Dataset | 🔗 Model | 🧮 Component attributions using Coar |
 |---------------------|----------|----------------------|
@@ -114,7 +114,7 @@ rm -f "$REPO_DIR/data/data.zip"
 
 ## Editing models with *Coar-Edit*
 
-In our [paper](https://arxiv.org/abs/TODO), we show that Coar-estimated attributions directly enable model editing.
+In our [paper](https://arxiv.org/abs/2404.11534), we show that Coar-estimated attributions directly enable model editing.
 Specifically, we outline a simple three-step procedure for model editing called Coar-Edit and demonstrate its effectiveness on six editing tasks ranging from fixing model errors
 to mitigating backdoor attacks.
 
@@ -124,9 +124,9 @@ Specifically, we provide notebooks for the following experiments:
 
 | 🧪 Experiment | 📓 Jupyter Notebook | 📊 Plot |
 |---------------|---------------------|---------|
-| Fixing a model error <br> ([Section 5.1](https://arxiv.org/abs/TODO)) | [`coar/edit/model_errors.ipynb`](https://github.com/harshays/modelcomponents/blob/main/coar/edit/model_errors.ipynb) | ![Plot](static/examples.jpg) |
-| Improving subpopulation robustness <br> ([Section 5.3](https://arxiv.org/abs/TODO)) | [`coar/edit/subpop_robustness.ipynb`](https://github.com/harshays/modelcomponents/blob/main/coar/edit/subpop_robustness.ipynb) | ![Plot](static/subpops.jpg) |
-| Mitigating backdoor attacks <br> ([Section 5.4](https://arxiv.org/abs/TODO)) | [`coar/edit/backdoor_attack.ipynb`](https://github.com/harshays/modelcomponents/blob/main/coar/edit/backdoor_attack.ipynb) | ![Plot](static/backdoor.jpg) |
+| Fixing a model error <br> ([Section 5.1](https://arxiv.org/abs/2404.11534)) | [`coar/edit/model_errors.ipynb`](https://github.com/harshays/modelcomponents/blob/main/coar/edit/model_errors.ipynb) | ![Plot](static/examples.jpg) |
+| Improving subpopulation robustness <br> ([Section 5.3](https://arxiv.org/abs/2404.11534)) | [`coar/edit/subpop_robustness.ipynb`](https://github.com/harshays/modelcomponents/blob/main/coar/edit/subpop_robustness.ipynb) | ![Plot](static/subpops.jpg) |
+| Mitigating backdoor attacks <br> ([Section 5.4](https://arxiv.org/abs/2404.11534)) | [`coar/edit/backdoor_attack.ipynb`](https://github.com/harshays/modelcomponents/blob/main/coar/edit/backdoor_attack.ipynb) | ![Plot](static/backdoor.jpg) |
 
 
 🚧 **Coming soon** 🚧: Notebooks for reproducing three more experiments from our paper: Selectively forgetting classes (Section 5.2); Improving CLIP robustness to typographic attacks (Section 5.5).
@@ -135,7 +135,12 @@ Specifically, we provide notebooks for the following experiments:
 ### Citation
 If you use this code in your work, please cite using the following BibTeX entry:
 ```bibtex
-TODO
+@inproceedings{shah2024decomposing,
+title={Decomposing and Editing Predictions by Modeling Model Computation},
+author={Harshay Shah and Andrew Ilyas and Aleksander Madry},
+booktitle={Arxiv preprint arXiv:2404.11534},
+year={2024}
+}
 ```
 
 ## Maintainers
