@@ -129,7 +129,7 @@ Specifically, we provide notebooks for the following experiments:
 | Mitigating backdoor attacks <br> ([Section 5.4](https://arxiv.org/abs/2404.11534)) | [`coar/edit/backdoor_attack.ipynb`](https://github.com/harshays/modelcomponents/blob/main/coar/edit/backdoor_attack.ipynb) | ![Plot](static/backdoor.jpg) |
 
 
-🚧 **Coming soon** 🚧: Notebooks for reproducing three more experiments from our paper: Selectively forgetting classes (Section 5.2); Improving CLIP robustness to typographic attacks (Section 5.5).
+🚧 **Coming soon** 🚧: Notebooks for reproducing two more experiments from our paper: Selectively forgetting classes (Section 5.2); Improving CLIP robustness to typographic attacks (Section 5.5).
 
 
 ### Citation
@@ -145,9 +145,3 @@ If you use this code in your work, please cite using the following BibTeX entry:
 
 ## Maintainers
 [Harshay Shah](https://twitter.com/harshays_)
-
-<!-- ## TODOs
-- gpt2 estimate/
-- notebooks for other experiments
-- make a package for coar  -->
-
