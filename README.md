@@ -34,7 +34,7 @@ Given an example, a component attribution---a *linear* component model---is a li
 
 **Estimating component attributions with Coar**.
 We develop a scalable method for estimating component attributions called Coar.
-In [Section 4 of our paper](https://arxiv.org/abs/2404.11534), we show that Coar yields accurate component attributions on large-scale vision and language models such as ImageNet ViTs and Phi-2. 
+In [Section 4 of our paper](https://arxiv.org/abs/2404.11534), we show that Coar yields accurate component attributions on large-scale vision and language models such as ImageNet ViTs and Phi-2.
 In this repository, we provide [pre-computed component attributions](#pre-computed-component-attributions) as well as [code for evaluating and applying Coar *from scratch*](#estimating-component-attributions-with-coar).
 
 **Editing models with component attributions.**
@@ -67,17 +67,17 @@ We provide code in `coar/` to compute Coar attributions *from scratch* for all t
 
 | 🧪 Experiment Setup | 🧩 Code for estimating Coar attributions |
 |---------------------|--------------|
-| ResNet18 trained on CIFAR-10  <br> (Setup A in Section 4) |  [`coar/estimate/cifar_resnet/`](https://github.com/harshays/modelcomponents/tree/main/coar/estimate/cifar_resnet) |
-| ViT-B/16 trained on ImageNet  <br> (Setup B in Section 4) |  [`coar/estimate/imagenet_resnet/`](https://github.com/harshays/modelcomponents/tree/main/coar/estimate/imagenet_resnet) |
-| ResNet50 trained on ImageNet  <br> (Setup C in Section 4) |  [`coar/estimate/imagenet_vit/`](https://github.com/harshays/modelcomponents/tree/main/coar/estimate/imagenet_vit) |
-| GPT-2 evaluated on TinyStories  <br> (Appendix I.1) |  [`coar/estimate/gpt2_tinystories/`](https://github.com/harshays/modelcomponents/tree/main/coar/estimate/gpt2_tinystories) |
+| ResNet18 trained on CIFAR-10  <br> (Setup A in Section 4) |  [`coar/estimate/cifar_resnet/`](https://github.com/MadryLab/modelcomponents/tree/main/coar/estimate/cifar_resnet) |
+| ViT-B/16 trained on ImageNet  <br> (Setup B in Section 4) |  [`coar/estimate/imagenet_resnet/`](https://github.com/MadryLab/modelcomponents/tree/main/coar/estimate/imagenet_resnet) |
+| ResNet50 trained on ImageNet  <br> (Setup C in Section 4) |  [`coar/estimate/imagenet_vit/`](https://github.com/MadryLab/modelcomponents/tree/main/coar/estimate/imagenet_vit) |
+| GPT-2 evaluated on TinyStories  <br> (Appendix I.1) |  [`coar/estimate/gpt2_tinystories/`](https://github.com/MadryLab/modelcomponents/tree/main/coar/estimate/gpt2_tinystories) |
 
 For each setup, we compute Coar attributions (one per test example) in three stages:
 1. **Initialization**: We first use a user-defined JSON specification file to initialize a directory of data stores, i.e., memory-mapped numpy arrays.
 2. **Dataset construction**: We then the data stores from above in order to incrementally build a "component dataset" for every example. Specifically, we use a Python script to construct component datasets containing tuples of (a) $\alpha$-sized random subsets of model components $C'$ and (b) the outputs of the model after ablating components in subset $C'$.
 3. **Regression**: We use the datasets described above to estimate component attributions (one per example) using [fast_l1](https://github.com/MadryLab/fast_l1), a SAGA-based GPU solver for linear regression.
 
-For a more detailed description of each stage, check our our mini-tutorial [here](https://github.com/harshays/modelcomponents/tree/main/coar).
+For a more detailed description of each stage, check our our mini-tutorial [here](https://github.com/MadryLab/modelcomponents/tree/main/coar).
 
 
 **Evaluating Coar attributions**:
@@ -85,7 +85,7 @@ We provide code for evaluating Coar attributions in `coar/evaluate`.
 Specifically, our evaluation quantifes the extent to which Coar attributions
 can accurately predict the counterfactual effect of ablating random $\alpha$-sized
 component subsets  on model outputs.
-In this repo, we evaluate pre-computed attributions of a CIFAR-10 ResNet model ([notebook](https://github.com/harshays/modelcomponents/blob/main/coar/evaluate/example_cifar.ipynb)) and an ImageNet ViT-B/16 model ([notebook](https://github.com/harshays/modelcomponents/blob/main/coar/evaluate/example_imagenet.ipynb)).
+In this repo, we evaluate pre-computed attributions of a CIFAR-10 ResNet model ([notebook](https://github.com/MadryLab/modelcomponents/blob/main/coar/evaluate/example_cifar.ipynb)) and an ImageNet ViT-B/16 model ([notebook](https://github.com/MadryLab/modelcomponents/blob/main/coar/evaluate/example_imagenet.ipynb)).
 
 🚧 **Coming soon** 🚧:
 A `pip`-installable package for estimating and evaluating Coar attributions on any model, dataset, and task
@@ -97,7 +97,7 @@ We also open-source a set of Coar-estimated component attributions that we use i
 
 | 💾  Dataset | 🔗 Model | 🧮 Component attributions using Coar |
 |---------------------|----------|----------------------|
-| CIFAR-10 <br> [[url](https://www.cs.toronto.edu/~kriz/cifar.html)]   | ResNet model trained from scratch <br> [[module](https://github.com/harshays/modelcomponents/blob/main/coar/src/models/mini_resnet.py)] [[.pt](https://www.dropbox.com/scl/fi/ar7fput9rzyxebep0cgqf/cifar.pt?rlkey=y4hmrj94o4vxe4so55z1ebefw&e=1&dl=0)] | Components: 2,304 conv filters <br> Attributions: [[test.pt](https://www.dropbox.com/scl/fi/muszxvauowakwvlczjgct/cifar.pt?rlkey=t1kqjusw1p3yr6264cxnnx1f5&dl=0)]  |
+| CIFAR-10 <br> [[url](https://www.cs.toronto.edu/~kriz/cifar.html)]   | ResNet model trained from scratch <br> [[module](https://github.com/MadryLab/modelcomponents/blob/main/coar/src/models/mini_resnet.py)] [[.pt](https://www.dropbox.com/scl/fi/ar7fput9rzyxebep0cgqf/cifar.pt?rlkey=y4hmrj94o4vxe4so55z1ebefw&e=1&dl=0)] | Components: 2,304 conv filters <br> Attributions: [[test.pt](https://www.dropbox.com/scl/fi/muszxvauowakwvlczjgct/cifar.pt?rlkey=t1kqjusw1p3yr6264cxnnx1f5&dl=0)]  |
 | ImageNet <br> [[url](https://www.image-net.org/download.php)]   | `torchvision.models.ResNet50_Weights.IMAGENET1K_V1`<br>[[url](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet50.html#torchvision.models.ResNet50_Weights)] | Components: 22,720 conv filters <br> Attributions: [[val.pt](https://www.dropbox.com/scl/fi/vd38pyjjyz1g7zu72r741/imagenet_resnet.pt?rlkey=45ideswhv9x3tyu7ctjcd84df&dl=0)] |
 | ImageNet <br> [[url](https://www.image-net.org/download.php)]   | `torchvision.models.ViT_B_16_Weights.IMAGENET1K_V1`<br>[[url](https://pytorch.org/vision/main/models/generated/torchvision.models.vit_b_16.html)] | Components: 82,944 neurons <br> Attributions: [[val.pt](https://www.dropbox.com/scl/fi/lm4hnvz4la8g9cg7ex9gp/imagenet_vit.pt?rlkey=6jz2rrrug1rw0zfdddeetooxo&dl=0)]  |
 | CelebA <br> [[url](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)]           | Fine-tuned ImageNet ResNet50 `torchvision` model<br>[[.pt](https://www.dropbox.com/scl/fi/7z6wqt6bv4hsxmefsbm0i/celeba.pt?rlkey=5jmee0tybtsuffig3ltd76ri7&dl=0)] | Components: 22,720 conv filters <br> Attributions: [[train.pt](https://www.dropbox.com/s/bfv9xehe6yn6npy/celeba_train.pt?dl=0)] [[test.pt](https://www.dropbox.com/s/bfv9xehe6yn6npy/celeba_test.pt?dl=0)] |
@@ -124,9 +124,9 @@ Specifically, we provide notebooks for the following experiments:
 
 | 🧪 Experiment | 📓 Jupyter Notebook | 📊 Plot |
 |---------------|---------------------|---------|
-| Fixing a model error <br> ([Section 5.1](https://arxiv.org/abs/2404.11534)) | [`coar/edit/model_errors.ipynb`](https://github.com/harshays/modelcomponents/blob/main/coar/edit/model_errors.ipynb) | ![Plot](static/examples.jpg) |
-| Improving subpopulation robustness <br> ([Section 5.3](https://arxiv.org/abs/2404.11534)) | [`coar/edit/subpop_robustness.ipynb`](https://github.com/harshays/modelcomponents/blob/main/coar/edit/subpop_robustness.ipynb) | ![Plot](static/subpops.jpg) |
-| Mitigating backdoor attacks <br> ([Section 5.4](https://arxiv.org/abs/2404.11534)) | [`coar/edit/backdoor_attack.ipynb`](https://github.com/harshays/modelcomponents/blob/main/coar/edit/backdoor_attack.ipynb) | ![Plot](static/backdoor.jpg) |
+| Fixing a model error <br> ([Section 5.1](https://arxiv.org/abs/2404.11534)) | [`coar/edit/model_errors.ipynb`](https://github.com/MadryLab/modelcomponents/blob/main/coar/edit/model_errors.ipynb) | ![Plot](static/examples.jpg) |
+| Improving subpopulation robustness <br> ([Section 5.3](https://arxiv.org/abs/2404.11534)) | [`coar/edit/subpop_robustness.ipynb`](https://github.com/MadryLab/modelcomponents/blob/main/coar/edit/subpop_robustness.ipynb) | ![Plot](static/subpops.jpg) |
+| Mitigating backdoor attacks <br> ([Section 5.4](https://arxiv.org/abs/2404.11534)) | [`coar/edit/backdoor_attack.ipynb`](https://github.com/MadryLab/modelcomponents/blob/main/coar/edit/backdoor_attack.ipynb) | ![Plot](static/backdoor.jpg) |
 
 
 🚧 **Coming soon** 🚧: Notebooks for reproducing two more experiments from our paper: Selectively forgetting classes (Section 5.2); Improving CLIP robustness to typographic attacks (Section 5.5).
