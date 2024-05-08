@@ -93,7 +93,9 @@ def main(logdir, spec):
     spec = json.loads(open(spec, "r").read())
     spec = preprocess_spec(spec)
 
-    Path(logdir).mkdir(parents=False, exist_ok=True)
+    if Path(logdir).exists():
+        print ('Log dir already exists, skipping')
+        return 
 
     num_models = spec["num_models"]
     for key, metadata in spec["schema"].items():

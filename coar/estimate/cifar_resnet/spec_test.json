@@ -1,5 +1,5 @@
 {
-    "num_models": 50000,
+    "num_models": 100,
     "schema": {
         "masks": {
             "dtype": "bool_",

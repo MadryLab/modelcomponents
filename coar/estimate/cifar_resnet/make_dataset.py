@@ -20,15 +20,10 @@ from src.utils import common_utils
 DEVICE = torch.device(0)
 DEBUG_MODE = True
 
-CIFAR10_MODEL_PATH = 'TODO'
-if CIFAR10_MODEL_PATH=='TODO':
-    assert False, "Download the model: https://www.dropbox.com/scl/fi/ar7fput9rzyxebep0cgqf/cifar.pt?rlkey=y4hmrj94o4vxe4so55z1ebefw&dl=0"
+MODEL_URL="https://www.dropbox.com/scl/fi/ar7fput9rzyxebep0cgqf/cifar.pt?rlkey=y4hmrj94o4vxe4so55z1ebefw&dl=0"
+BETON_URL="https://www.dropbox.com/scl/fi/4zj04xkgnb5mpw4aosvrt/cifar10.beton?rlkey=wspv74qs0h7l5cbxmzntmsywe&dl=0"
 
-CIFAR10_TEST_BETON_PATH = 'TODO'
-if CIFAR10_TEST_BETON_PATH=='TODO':
-    assert False, "Download the beton: https://www.dropbox.com/scl/fi/4zj04xkgnb5mpw4aosvrt/cifar10.beton?rlkey=wspv74qs0h7l5cbxmzntmsywe&dl=0'"
-
-def get_data(subsample_skip, batch_size, num_workers):
+def get_data(beton_path, subsample_skip, batch_size, num_workers):
     """
     Args
     - subsample_skip: int (skip factor for dataset subsampling)
@@ -37,12 +32,12 @@ def get_data(subsample_skip, batch_size, num_workers):
     Output
     - loaders: dict (dataloaders)
     """
-    pipeline = ffcv_pipelines.get_pipelines('cifar10', 'test', device)
-    indices = np.arange(0, 50_000, subsample_skip)
+    pipeline = ffcv_pipelines.get_pipelines('cifar10', 'test', DEVICE)
+    indices = np.arange(0, 10_000, subsample_skip)
 
     loaders = {
-        'test': data_utils.get_ffcv_loader(CIFAR10_TEST_BETON_PATH, batch_size, num_workers,
-                                          pipeline, False, indices=indices)
+        'test': data_utils.get_ffcv_loader(beton_path, batch_size, num_workers,
+                                           pipeline, False, indices=indices)
     }
 
     return loaders
@@ -63,12 +58,12 @@ def evaluate(loader_map, model):
 
     return dict(stats)
 
-def get_model():
+def get_model(model_path):
     """
     Output
     - model: nn.Module (model)
     """
-    return torch.load(CIFAR10_MODEL_PATH).eval().cpu()
+    return torch.load(model_path).eval().cpu()
 
 def get_model_components(model):
     """
@@ -157,7 +152,9 @@ def get_args():
         num_partitions=Param(int, 'number of partitions', default=1),
         subsample_skip=Param(int, 'subsample skip', default=1),
         batch_size=Param(int, 'batch size', default=500),
-        num_workers=Param(int, 'number of workers', default=3)
+        num_workers=Param(int, 'number of workers', default=3),
+        model_path=Param(str, 'path to model', default='TODO'),
+        beton_path=Param(str, 'path to beton', default='TODO')
     )
 
     return sections
@@ -179,10 +176,20 @@ def run():
     base_dir =  Path(args.expt.base_dir)
     assert base_dir.exists(), base_dir
 
+    # check model and beton paths
+    model_path = args.expt.model_path
+    beton_path = args.expt.beton_path
+
+    if model_path=='TODO' or not Path(model_path).exists():
+        assert False, f'Download model from: {MODEL_URL}'
+
+    if beton_path=='TODO' or not Path(beton_path).exists():
+        assert False, f'Download beton from: {BETON_URL}'
+
     # get model and dataloader(s)
-    model = get_model()
+    model = get_model(model_path)
     mod_comps = get_model_components(model)
-    loaders = get_data(args.expt.subsample_skip, args.expt.batch_size, args.expt.num_workers)
+    loaders = get_data(beton_path, args.expt.subsample_skip, args.expt.batch_size, args.expt.num_workers)
 
     # get data-store indices
     indices = list(range(args.expt.start_index, args.expt.end_index))
@@ -225,6 +232,6 @@ def run():
 
         ndm_utils.update_mmapped_file(base_dir, index, out)
         torch.cuda.empty_cache()
-
+    
 if __name__ == '__main__':
     run()
