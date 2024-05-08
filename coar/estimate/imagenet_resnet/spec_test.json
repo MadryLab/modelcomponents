@@ -1,16 +1,16 @@
 {
-    "num_models": 100000,
+    "num_models": 100,
     "schema": {
         "masks": {
             "dtype": "bool_",
             "shape": [
-                64512
+                22720
             ]
         },
-        "test_margins": {
+        "val_margins": {
             "dtype": "float16",
             "shape": [
-                500
+                50000
             ]
         }
     }

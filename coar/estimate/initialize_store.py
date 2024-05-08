@@ -96,6 +96,8 @@ def main(logdir, spec):
     if Path(logdir).exists():
         print ('Log dir already exists, skipping')
         return 
+    else:
+        Path(logdir).mkdir(parents=False, exist_ok=True)
 
     num_models = spec["num_models"]
     for key, metadata in spec["schema"].items():

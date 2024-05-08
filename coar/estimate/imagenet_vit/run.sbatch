@@ -9,6 +9,8 @@
 #SBATCH --error=<LOG_DIR>/in_vit_%a.err
 #SBATCH --requeue
 
+# note: just an sbatch example, you'll need to change this based on your setup
+
 source ~/.setup.sh
 
 GITHUB_REPO_DIR=/mnt/cfs/home/harshay/repos/modelcomponents/coar

@@ -23,7 +23,8 @@ NUM_WORKERS = 2
 DEBUG_MODE = True
 ENABLE_AMP = True
 NUM_COMPONENTS = 64_512
-DATASET_SIZE = 1000
+DATASET_SIZE = 500
+DATASET_PATH = "roneneldan/TinyStories"  # download
 
 
 def get_data(tokenizer, batch_size, num_workers=NUM_WORKERS):
@@ -36,13 +37,12 @@ def get_data(tokenizer, batch_size, num_workers=NUM_WORKERS):
     - loader
     """
     # load dataset
-    dataset_path = "roneneldan/TinyStories"
-    is_local = Path(dataset_path).exists()
+    is_local = Path(DATASET_PATH).exists()
 
     if is_local:
-        dataset = datasets.load_from_disk(dataset_path)
+        dataset = datasets.load_from_disk(DATASET_PATH)
     else:
-        dataset = datasets.load_dataset(dataset_path)
+        dataset = datasets.load_dataset(DATASET_PATH)
 
     dataset = dataset["validation"].train_test_split(
         test_size=DATASET_SIZE, shuffle=False
@@ -137,9 +137,8 @@ def get_model_and_tokenizer():
         model_name_or_path, local_files_only=is_local
     )
     tokenizer.pad_token = tokenizer.eos_token
-
-    # note: manually account for right padding in margin eval code (makes it a bit simpler)
     tokenizer.padding_side = "right"
+    # note: manually account for right padding in margin eval code (makes it a bit simpler)
 
     return model, tokenizer
 
