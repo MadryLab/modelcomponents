@@ -135,10 +135,10 @@ Specifically, we provide notebooks for the following experiments:
 ### Citation
 If you use this code in your work, please cite using the following BibTeX entry:
 ```bibtex
-@inproceedings{shah2024decomposing,
+@article{shah2024decomposing,
   title={Decomposing and Editing Predictions by Modeling Model Computation},
-  author={Harshay Shah and Andrew Ilyas and Aleksander Madry},
-  booktitle={Arxiv preprint arXiv:2404.11534},
+  author={Shah, Harshay and Ilyas, Andrew and Madry, Aleksander},
+  journal={arXiv preprint arXiv:2404.11534},
   year={2024}
 }
 ```
